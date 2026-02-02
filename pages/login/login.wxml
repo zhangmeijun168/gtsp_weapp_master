@@ -1,0 +1,29 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="container">
+  <mp-form id="form" class="header-form" rules="{{rules}}" models="{{formData}}">
+    <view class="header">
+      <view class="form-column">
+        <input bindinput="formInputChange" data-field="email" placeholder="请输入邮箱地址或手机号" value="{{formData.email}}" placeholder-style="color: #ccc" />
+      </view>
+      <view class="form-column">
+        <input bindinput="formInputChange" data-field="password" placeholder="请输入密码" type="password" placeholder-style="color: #ccc" />
+      </view>
+      <image class="logo-backupgroud" src="../../assets/logo.png" />
+    </view>
+    <view class="form-checkbox">
+      <checkbox-group bindchange="checkboxChange">
+        <checkbox data-field="agreement" value="agreement" checked="{{formData.agreement}}" />已阅读并同意<navigator url="/pages/userAgreement/userAgreement" class="link">《用户协议》</navigator>及<navigator url="/pages/privacyAgreement/privacyAgreement" class="link">《隐私政策》</navigator>
+      </checkbox-group>
+    </view>
+  </mp-form>
+  <button bindtap="submitForm">登录</button>
+</view>
+
+<!-- 
+  <view class="form-column verification-code">
+    <input bindinput="formInputChange" data-field="verificationCode" 
+    placeholder="验证码" placeholder-style="color: #ccc" maxlength="6"/>
+    <button class="btn-code" bindtap="sendVerificationCode"
+    disabled="{{btnCodeDisabled}}" >{{btnCodeTxt}}</button>
+  </view>
+-->

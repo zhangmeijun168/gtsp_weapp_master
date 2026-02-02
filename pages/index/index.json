@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "欢迎使用新冠检测采样助手",
+  "navigationBarBackgroundColor": "#13c2c2",
+  "usingComponents": {
+    "component-login": "/pages/login/login",
+    "component-dashboard": "/pages/dashboard/dashboard"
+  }
+}

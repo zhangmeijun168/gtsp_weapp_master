@@ -1,0 +1,15 @@
+<view style="display: flex; align-items: center; justify-content: space-between; color:#13c2c2;margin-top: 12px;">
+    <view style="display: flex; align-items: center; justify-content: space-between;margin:0 12px 0 18px">
+        <view class="tubeCount"></view>
+        <view>{{tubeCount}}</view>
+    </view>
+    <view wx:if="{{pageType==='human' }}" style="display: flex; align-items: center; justify-content: space-between;margin:0 12px">
+        <view class="humanCount"></view>
+        <view>{{humanCount}}</view>
+    </view>
+    <view wx:if="{{pageType==='env' }}" style="display: flex; align-items: center; justify-content: space-between;margin:0 12px">
+        <view class="envCount"></view>
+        <view>{{envCount}}</view>
+    </view>
+    <button class="small" bindtap="showSubmitList" style="margin: 0 8px; color:#13c2c2; border: 1px #13c2c2 solid; background-color: white;">本机采集汇总</button>
+</view>

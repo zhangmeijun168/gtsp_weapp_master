@@ -1,0 +1,71 @@
+<!--pages/envStatistic/envStatistic.wxml-->
+<view class="container">
+    <view style="display: flex; align-items: center; justify-content: space-between; color:#13c2c2;margin-top: 12px; font-size: 12px;">
+        <view style="display: flex; flex:1">
+            <view class="tabButton first {{tab==='tube'?'check':''}}" bindtap="changeTab" data-tab="tube">
+                <view class="tubeCount {{tab==='tube'?'white':''}}"></view>
+                <view>{{tubeCount}}</view>
+            </view>
+            <view class="tabButton last {{tab==='env'?'check':''}}" bindtap="changeTab" data-tab="env">
+                <view class="envCount {{tab==='env'?'white':''}}"></view>
+                <view>{{envCount}}</view>
+            </view>
+        </view>
+        <button class="small" bindtap="clearCount" style="display:flex; justify-content: center; align-items:center; width:100px; margin:0 8px; color:#13c2c2 ;border: 1px #13c2c2 solid; background-color: white;">
+            <view class="clear"></view>
+            <view>清空历史</view>
+        </button>
+    </view>
+    <view wx:if="{{tab==='tube'}}" style="padding: 12px 8px 0 8px; display: flex; flex-direction: column; justify-content: center; align-items: center; flex:1;">
+        <view style="width:100%; display: grid; grid-template-columns: 33% 33% 33%;text-align: center; background-color: #13c2c2; color:white; border:solid 1px #13c2c2; padding:4px 0">
+            <view>混合模式</view>
+            <view>管数</view>
+            <view>位点数</view>
+        </view>
+        <view wx:for="{{tubeStatistic}}" wx:key="num" style="width:100%; display: grid; grid-template-columns: 33% 33% 33%;text-align: center; color:#13c2c2; border:1px dotted #13c2c2; border-top:0px; padding:4px 0">
+            <view>{{item.numDesc}}</view>
+            <view>{{item.sampleNumbers.length}}</view>
+            <view>{{item.detailCount}}</view>
+        </view>
+        <view wx:if="{{tubeStatistic.length===0}}" style="width:100%; display: grid; grid-template-columns: 33% 33% 33%;text-align: center; color:#ccc; border:1px dotted #13c2c2; border-top:0px; padding:4px 0;">
+            <view></view>
+            <view>暂无数据</view>
+            <view></view>
+        </view>
+    </view>
+    <view wx:if="{{tab==='env'}}">
+        <view style="margin: 16px 8px; border-bottom: 1px solid #13c2c2;">
+            <input placeholder="模糊匹配: 样本名称/编号/送检单位" placeholder-style="color:#ccc" onblur="searchLogs" value="{{searchInput}}" bindinput="changeSearchInput" />
+            <mp-icon bindtap="clearSearch" type="field" style="opacity: 0.3; position: absolute; margin: 0; right: 12px; top: 52px; z-index: 100;" icon="close2" color="black" size="{{18}}">
+            </mp-icon>
+        </view>
+        <scroll-view scroll-y style="height: calc(100vh - 100px);" bindscrolltolower="logsReachBottom">
+            <view wx:if="{{displayedLogs.length>0}}" style="padding-top: 10px;">
+                <view wx:for="{{displayedLogs}}" wx:key="sampleNumber" style="margin-bottom: 24px;">
+                    <view style="margin-bottom: 4px; display: flex; justify-content: space-between; padding: 0 12px">
+                        <text style=" color:grey;">样本编号: {{item.number}}</text>
+                        <text style=" color:grey;">({{item.envSamples.length}})</text>
+                    </view>
+                    <view style="margin-bottom: 4px; display: flex; justify-content: space-between; padding: 0 12px"><text style=" color:grey;">采样单位: {{item.unit}}</text></view>
+                    <view style="border: 1px dotted rgba(167, 167, 167, 0.5); border-radius: 12px; margin: 6px 0;">
+                        <view wx:for="{{item.envSamples}}" wx:key="id">
+                            <view style="font-size: 14px; margin: 4px 0; display: flex;align-items: center; text-align: center; justify-content: space-around;">
+                                <text style="width:60px">{{item.type}}</text>
+                                <text style="width:188px;word-wrap: break-word;">{{item.name}}</text>
+                                <text style="width:50px;color:#13c2c2" bindtap="modifyReservation" data-id="{{item.id}}">修改</text>
+                                <text style="padding-left: 4px;"></text>
+                                <text style="width:50px;color:#13c2c2" bindtap="invalidReservation" data-id="{{item.id}}">作废</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view wx:else style="height:100%">
+                <view style="display: flex;margin-top: 40%; color:#ccc;align-items: center;justify-content: center; flex-direction: column;">
+                    <mp-icon type="field" icon="error" size="{{60}}" color="#ccc"></mp-icon>
+                    暂无数据
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

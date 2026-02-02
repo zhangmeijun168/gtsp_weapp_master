@@ -1,0 +1,9 @@
+<page-container show="{{isShowDialog}}" overlay="true" position="bottom" round="true" z-index="2000">
+    <scroll-view class="select-scroll" scroll-y="true" enhanced="true">
+        <view class="select-view">
+            <view wx:for="{{list}}" wx:key="index" bind:tap="onTapRecord" data-item="{{item}}" class="select-option">
+                {{type==="env-unit" || type === "stationList"? item.desc:item}}
+            </view>
+        </view>
+    </scroll-view>
+</page-container>

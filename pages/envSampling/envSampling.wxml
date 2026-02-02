@@ -1,0 +1,74 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="container">
+	<link-to-statistic tubeCount="{{tubeCount}}" envCount="{{envCount}}" pageType="env" />
+	<mp-form id="form" rules="{{rules}}" models="{{formData}}">
+		<mp-cells>
+			<mp-cell title="类型">
+				<radio-group class="radio-group" data-field="type" bindchange="formInputChange">
+					<radio class="radio-item radio-item-right" wx:for="{{typeOptions}}" wx:key="value" value="{{item.value}}" checked="{{item.value === formData.type}}" label="{{item.name}}" color="#13c2c2">
+						{{item.name}}</radio>
+				</radio-group>
+			</mp-cell>
+			<mp-cell prop="name" title="样本名称" ext-class="">
+				<textarea auto-height="true" bindinput="formInputChange" data-field="name" class="weui-input" placeholder="" value="{{formData.name}}" placeholder-style="color:#ccc" style="width:calc(100% - 60px)"/>
+				<view wx:if="{{!!formData.name}}" style="right: 38px; z-index: 1000;" bindtap="setTagInput" data-field="name" data-name="" class="input-icon">
+					<mp-icon type="field" icon="close2" color="black" size="{{24}}"></mp-icon>
+				</view>
+				<view class="input-icon" bindtap="openEnvNameList" style="transform: rotate(-90deg); top:16px; z-index: 1000;" data-type="name">
+					<mp-icon type="field" icon="back2" color="black" size="{{24}}"> </mp-icon>
+				</view>
+			</mp-cell>
+			<mp-cell title="样本编号">
+				<input bindinput="formInputChange" bindblur="onSampleNumberChange" data-field="number" class="weui-input" placeholder="样本编号" value="{{formData.number}}" placeholder-style="color:#ccc" style="width:calc(100% - 60px)" />
+				<mp-icon bindtap="generateNextSampleCode" type="field" class="input-icon" icon="add" color="black" size="{{24}}" style="padding-right: 36px;"></mp-icon>
+				<mp-icon bindtap="scanSampleNumber" type="field" class="input-icon" icon="camera" color="black" size="{{24}}"></mp-icon>
+				<!-- <mp-icon bindtap="scanSampleNumber" type="outline" class="icon-code icon-code-sample" icon="qr-code" color="#555" size="{{32}}"></mp-icon> -->
+			</mp-cell>
+			<mp-cell title="采样日期">
+				<picker data-field="samplingDate" mode="date" start="1901-09-01" end="2099-09-01" bindchange="formInputChange">
+					<input disabled="true" value="{{formData.samplingDate}}" placeholder="采样日期" placeholder-style="color: #ccc" />
+				</picker>
+			</mp-cell>
+			<mp-cell title="送检批次">
+				<input bindinput="formInputChange" data-field="batchNo" class="weui-input" placeholder="送检批次" value="{{formData.batchNo}}" placeholder-style="color:#ccc" style="width:calc(100% - 60px)" />
+				<view wx:if="{{!!formData.batchNo}}" style="right: 38px; z-index: 1000;" bindtap="setTagInput" data-field="batchNo" data-name="" class="input-icon">
+					<mp-icon type="field" icon="close2" color="black" size="{{24}}"></mp-icon>
+				</view>
+				<view class="input-icon" bindtap="openBatchNoList" style="transform: rotate(-90deg); top:16px; z-index: 1000;" data-type="unit">
+					<mp-icon type="field" icon="back2" color="black" size="{{24}}"> </mp-icon>
+				</view>
+			</mp-cell>
+			<mp-cell title="委托单位">
+				<input bindinput="formInputChange" data-field="unit" class="weui-input" placeholder="委托单位" value="{{formData.unit}}" placeholder-style="color:#ccc" style="width:calc(100% - 60px)" />
+				<view wx:if="{{!!formData.unit}}" style="right: 38px; z-index: 1000;" bindtap="setTagInput" data-field="unit" data-name="" class="input-icon">
+					<mp-icon type="field" icon="close2" color="black" size="{{24}}"></mp-icon>
+				</view>
+				<view class="input-icon" bindtap="openUnitList" style="transform: rotate(-90deg); top:16px; z-index: 1000;" data-type="unit">
+					<mp-icon type="field" icon="back2" color="black" size="{{24}}"> </mp-icon>
+				</view>
+			</mp-cell>
+			<mp-cell title="采样地址">
+				<input bindinput="formInputChange" data-field="address" class="weui-input" placeholder="采样地址" value="{{formData.address}}" placeholder-style="color:#ccc" style="width:calc(100% - 60px)" />
+				<view wx:if="{{!!formData.address}}" style="right: 38px; z-index: 1000;" bindtap="setTagInput" data-field="address" data-name="" class="input-icon">
+					<mp-icon type="field" icon="close2" color="black" size="{{24}}"></mp-icon>
+				</view>
+				<view class="input-icon" bindtap="openAddressList" style="transform: rotate(-90deg); top:16px; z-index: 1000;" data-type="address">
+					<mp-icon type="field" icon="back2" color="black" size="{{24}}"> </mp-icon>
+				</view>
+			</mp-cell>
+			<!-- <mp-cell prop="quantity" title="数量" ext-class="">
+					<input bindinput="formInputChange" type="number" value="{{formData.quantity}}" data-field="quantity"
+						class="weui-input" />
+				</mp-cell> -->
+			<mp-cell title="备注">
+				<textarea auto-height bindinput="formInputChange" data-field="remark" class="weui-input" value="{{formData.remark}}" />
+			</mp-cell>
+		</mp-cells>
+	</mp-form>
+	<view style="display:flex; justify-content: space-between;width:100%">
+		<button bindtap="submitForm">
+			{{curNum}}/{{mixNum}} 提交
+		</button>
+	</view>
+	<input-log-select id="input-log-select" bind:onTapRecord="onTapRecord" />
+</view>

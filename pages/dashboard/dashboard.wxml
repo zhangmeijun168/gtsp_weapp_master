@@ -1,0 +1,43 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="header">
+    <view id="form" class="header-form">
+      <image class="avatar" src="../../assets/avatar.png"></image>
+      <view class="user-info">
+        <label class="name">{{nickname}}</label>
+        <text class="desc">{{roleText}} </text>
+        <picker class="station" wx:if="{{station}}" bindchange="onChangeUserStation" value="{{stationIndex}}" range="{{stations}}" range-key="name">
+          {{stations[stationIndex].name}}</picker>
+      </view>
+    </view>
+    <image class="logo-backupgroud" src="../../assets/logo.png"></image>
+  </view>
+
+  <view class="btn-area">
+    <navigator class="btn-area-view" url="/pages/mtReceive/index">
+      <view class="i-icon env-his"></view>
+      <view class="icon-label">美团买药</view>
+    </navigator>
+    <navigator class="btn-area-view" url="/pages/humanMixConfig/mixConfig" data-name="预约用户采集">
+      <view class="i-icon human-collect"></view>
+      <view class="icon-label">人体采集</view>
+    </navigator>
+    <navigator class="btn-area-view" url="/pages/humanStatisticOnline/humanStatisticOnline">
+      <view class="i-icon human-statistic"></view>
+      <view class="icon-label">人体统计</view>
+    </navigator>
+    <navigator class="btn-area-view" url="/pages/humanSearch/humanSearch">
+      <view class="i-icon reservation-search"></view>
+      <view class="icon-label">预约查询</view>
+    </navigator>
+    <navigator class="btn-area-view" url="/pages/envMixConfig/mixConfigEnv">
+      <view class="i-icon env-collect"></view>
+      <view class="icon-label">环境采集</view>
+    </navigator>
+    <navigator class="btn-area-view" url="/pages/envStatisticOnline/envStatisticOnline">
+      <view class="i-icon env-statistic"></view>
+      <view class="icon-label">环境统计</view>
+    </navigator>
+  </view>
+  <button bindtap="loginOut">登出</button>
+</view>

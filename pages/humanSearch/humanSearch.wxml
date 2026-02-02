@@ -1,0 +1,91 @@
+<view class="container">
+    <view style="display:flex; justify-content:space-between;width:100%;">
+        <button style="width:44%;" bindtap="scanIDCard">
+            <mp-icon type="field" icon="contacts" size="{{24}}" color="white">
+            </mp-icon><text> 身份证</text>
+        </button>
+        <button style="width:44%;" bindtap="scanReserveId">
+            <mp-icon icon="camera" size="{{24}}" type="field" color="white">
+            </mp-icon><text> 预约码</text>
+        </button>
+    </view>
+    <mp-form id="defaultForm" rules="{{defaultFormRule}}" models="{{defaultForm}}">
+        <mp-cells>
+            <mp-cell>
+                <view slot="title" class="mp-cell-title">姓名</view>
+                <input bindinput="defaultFormChange" data-field="name" class="weui-input" placeholder="姓名" value="{{defaultForm.name}}" placeholder-style="color:#ccc" />
+            </mp-cell>
+            <mp-cell>
+                <view slot="title" class="mp-cell-title">证件号码</view>
+                <input bindinput="defaultFormChange" data-field="identityNumber" class="weui-input" placeholder="证件号码" value="{{defaultForm.identityNumber}}" placeholder-style="color:#ccc" style="width:calc( 100% - 30px)" />
+            </mp-cell>
+        </mp-cells>
+        <view style="display:flex; justify-content:space-between;width:100%;">
+            <button class="grey" bindtap="cleanAll" style="width:44%;">重置</button>
+            <button bindtap="queryReservation" style="width:44%;">查询</button>
+        </view>
+
+        <mp-form wx:if="{{searchResult.length>0}}">
+            <view wx:for="{{searchResult}}" wx:key="index" class="info-box">
+                <view class="flex">
+                    <text class="info-label">姓名</text>
+                    <input disabled="{{true}}" value="{{item.name}}" />
+                </view>
+                <view class="flex">
+                    <text class="info-label">身份证</text>
+                    <input disabled="{{true}}" value="{{item.identityNumber}}" />
+                </view>
+                <view class="flex">
+                    <text class="info-label">性别</text>
+                    <input disabled="{{true}}" value="{{item.gender==='MALE'?'男':'女'}}" />
+                </view>
+                <view class="flex">
+                    <text class="info-label">采集站</text>
+                    <input disabled="{{true}}" value="{{item.station.name}}" />
+                </view>
+                <view class="flex">
+                    <text class="info-label">预约时间</text>
+                    <input disabled="{{true}}" value="{{item.appointment}}" />
+                </view>
+                <view class="flex">
+                    <text class="info-label">预约类型</text>
+                    <input disabled="{{true}}" value="{{item.type}}" />
+                </view>
+                <view class="flex">
+                    <text class="info-label">检测产品</text>
+                    <input disabled="{{true}}" value="{{item.product.pName}}" />
+                </view>
+                <view class="flex">
+                    <text class="info-label">检测项目</text>
+                    <input disabled="{{true}}" value="{{item.tName}}" />
+                </view>
+                <view class="flex">
+                    <text class="info-label">是否支付</text>
+                    <input disabled="{{true}}" value="{{fn.translatePaymentStatus(item)}}" />
+                </view>
+            </view>
+        </mp-form>
+    </mp-form>
+</view>
+<wxs module='fn'>
+    module.exports = {
+        translatePaymentStatus: function (item) {
+            var freeIdentity = item.freeIdentity;
+            var paymentStatus = item.paymentStatus;
+            if (freeIdentity) {
+                return '免费'
+            }
+            switch (paymentStatus) {
+                case 'UNPAID':
+                    return '未支付';
+                case 'PAID':
+                    return '已支付';
+                case 'REFUNDED':
+                    return '已退款'
+                case 'REFUNDEDING':
+                    return '退款中'
+                default: return '未知'
+            }
+        }
+    }
+</wxs>

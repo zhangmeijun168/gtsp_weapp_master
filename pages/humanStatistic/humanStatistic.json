@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "人体样本采集汇总",
+    "navigationBarBackgroundColor": "#13c2c2",
+    "usingComponents": {
+        "mp-loading": "/miniprogram_npm/weui-miniprogram/loading/loading"
+    }
+}

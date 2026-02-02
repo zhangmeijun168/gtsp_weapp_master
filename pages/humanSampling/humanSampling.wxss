@@ -1,0 +1,116 @@
+.fix-view {
+  position: fixed;
+  z-index: 1000;
+  bottom: 80px;
+  right: 10px;
+}
+
+.circle {
+  width: 54px;
+  height: 54px;
+  border-radius: 54px;
+  position: relative;
+  margin-top: 12px;
+  color: white;
+}
+
+.mixNum-circle {
+  background-color: #c1621ac4;
+}
+
+.mixNum-cur {
+  position: absolute;
+  top: 2px;
+  text-align: center;
+  width: 100%;
+}
+
+.mixNum-slash {
+  position: absolute;
+  top: 49%;
+  left: 15%;
+  width: 70%;
+  border-top: 2px solid;
+}
+
+.mixNum-max {
+  position: absolute;
+  bottom: 2px;
+  text-align: center;
+  width: 100%
+}
+
+.paidMarker {
+  border: 1px solid #5abfc0;
+  padding: 10px 20px;
+  color: #5abfc0;
+  font-size: 18px;
+  position: absolute;
+  right: 10px;
+  top: 30px;
+  transform: rotate(30deg);
+  opacity: 0.7;
+}
+
+.unPaidMarker {
+  border: 1px solid red;
+  padding: 10px 20px;
+  color: red;
+  font-size: 18px;
+  position: absolute;
+  right: 10px;
+  top: 30px;
+  transform: rotate(30deg);
+  opacity: 0.7;
+}
+
+.dangerMarker {
+  border: 1px solid red;
+  padding: 10px 20px;
+  color: red;
+  font-size: 18px;
+  position: absolute;
+  right: 10px;
+  top: 90px;
+  transform: rotate(30deg);
+  opacity: 0.7;
+}
+
+.info-box {
+  border: 2px solid #13c2c2;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.flex {
+  display: flex;
+  margin-top: 4px;
+}
+
+.info-label {
+  width: 120px;
+  margin-right: 20px;
+  text-align: right;
+}
+
+.tubeCount {
+  height: 28px;
+  width: 28px;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M686.68 580.27v68.27H140.27v-68.27z' fill='%2313c2c2'/%3E%3Cpath d='M518.26 183.74a34.13 34.13 0 0 1 50.26 46.10l-1.00 2.17-383.54 383.54c-61.95 61.95-61.95 163.52 0 225.45 60.76 60.79 159.69 61.93 221.92 3.46l3.55-3.45 383.54-383.54a34.13 34.13 0 0 1 50.26 46.10l-1.98 2.17L456.70 889.29c-88.61 88.58-233.40 88.58-322.01 0-87.21-87.24-88.58-228.92-4.10-317.82l4.10-4.20 383.56-383.54z' fill='%2313c2c2'/%3E%3Cpath d='M481.11 95.33a34.13 34.13 0 0 1 46.10-1.00l2.18 1.00 399.29 399.29a34.13 34.13 0 0 1-46.10 50.26l-2.18-1.00L481.11 143.60a34.13 34.13 0 0 1 0-48.26z' fill='%2313c2c2'/%3E%3Cpath d='M448.12 469.49c1.59-2.36 3.38-4.61 5.41-6.69 17.12-17.58 44.49-19.13 62.67-11.54 18.86 7.83 28.71 24.81 26.37 45.38a47.55 47.55 0 0 1-22.46 35.16c-19.40 11.95-44.32 9.27-58.90 0.43a41.39 41.39 0 0 1-18.38-22.94 45.81 45.81 0 0 1 5.29-39.80M345.16 596.14a34.53 34.53 0 0 1-5.58-2.73c-15.14-9.27-20.60-28.33-18.16-42.38 2.54-14.54 12.94-24.20 27.82-25.84a34.41 34.41 0 0 1 28.38 10.24c11.54 11.78 13.60 29.80 9.71 41.47a30.04 30.04 0 0 1-13.26 16.64 33.11 33.11 0 0 1-28.91 2.61' fill='%2313c2c2'/%3E%3C/svg%3E");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position-x: 0%;
+  background-position-y: 50%;
+}
+
+.humanCount {
+  height: 28px;
+  width: 28px;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M511.42 68.27C393.56 68.27 317.63 117.96 281.26 201.78c-23.26 53.62-27.31 110.39-21.90 163.87l0.68 5.77c6.52 50.48 32.15 110.76 68.86 154.56l2.12 2.47L143.87 685.52A68.27 68.27 0 0 0 119.47 737.79v149.67a68.27 68.27 0 0 0 68.27 68.27h648.53a68.27 68.27 0 0 0 68.27-68.27v-149.62l-0.12-4.03a68.27 68.27 0 0 0-24.41-48.38L694.95 531.01l2.85-3.12c38.18-43.49 62.46-101.70 70.49-161.13 7.24-53.93 2.17-116.53-23.52-170.70C706.56 115.42 629.30 68.27 511.42 68.27z m0 68.27c91.92 0 144.95 32.36 171.67 88.75 19.11 40.36 23.18 90.39 17.53 132.39-7.90 58.76-36.15 115.76-77.94 147.54a34.13 34.13 0 0 0-1.21 53.38L836.27 737.86V887.47H187.73v-149.66l216.06-181.28a34.13 34.13 0 0 0-0.89-53.01c-39.13-30.69-70.78-97.06-75.61-144.76-4.35-42.89-1.08-89.12 16.59-129.81C369.41 170.12 420.69 136.53 511.42 136.53z' fill='%2313c2c2'/%3E%3Cpath d='M546.13 648.53v170.67h-68.27V648.53a34.13 34.13 0 1 1 68.27 0z' fill='%2313c2c2'/%3E%3C/svg%3E");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position-x: 0%;
+  background-position-y: 50%;
+}

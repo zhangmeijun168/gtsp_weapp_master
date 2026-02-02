@@ -1,0 +1,155 @@
+<mp-toptips msg="{{toptipContent}}" type="{{toptipType || 'error'}}" show="{{toptipContent}}"></mp-toptips>
+<view class="container">
+    <link-to-statistic tubeCount="{{tubeCount}}" humanCount="{{humanCount}}" pageType="human" />
+    <mp-form id="defaultForm" rules="{{defaultFormRule}}" models="{{defaultForm}}">
+        <mp-cells>
+            <mp-cell title="样本编号">
+                <input bindinput="defaultFormChange" bindblur="onSampleNumberChange" data-field="sampleNumber" class="weui-input" placeholder="样本编号" value="{{defaultForm.sampleNumber}}" placeholder-style="color:#ccc" />
+                <mp-icon bindtap="generateNextSampleCode" type="field" class="input-icon" icon="add" color="black" size="{{24}}" style="padding-right: 36px;"></mp-icon>
+                <mp-icon bindtap="scanSampleNumber" type="field" class="input-icon" icon="camera" color="black" size="{{24}}"></mp-icon>
+            </mp-cell>
+            <!-- <mp-cell title="采样日期">
+                <picker data-field="samplingDate" mode="date" value="{{defaultForm.samplingDate}}" start="2021-01-01"
+                    end="2099-09-01" bindchange="defaultFormChange">
+                    <input disabled="true" value="{{defaultForm.samplingDate}}" placeholder="采样日期"
+                        placeholder-style="color: #ccc" />
+                </picker>
+            </mp-cell> -->
+        </mp-cells>
+        <view style="display:flex; justify-content: space-between;width:100%;margin-top: 0px;">
+            <button style="width:40%" bindtap="scanIDCard">
+                <mp-icon type="field" icon="contacts" size="{{24}}" color="white">
+                </mp-icon> 身份证
+            </button>
+            <button style="width:40%" bindtap="scanReserveId">
+                <mp-icon icon="camera" size="{{24}}" type="field" color="white">
+                </mp-icon> 扫预约码
+            </button>
+        </view>
+        <view style="display:flex; justify-content: space-between;width:100%;">
+            <button style="width:90%; margin-top: 0" bindtap="scanPreRegistration">
+                <mp-icon icon="camera" size="{{24}}" type="field" color="white">
+                </mp-icon> 扫预登记码
+            </button>
+        </view>
+        <swiper indicator-dots style="height:400px" duration="200">
+            <swiper-item wx:key="main">
+                <mp-cells>
+                    <mp-cell>
+                        <view slot="title" class="mp-cell-title">姓名<text class="danger">*</text></view>
+                        <input bindinput="defaultFormChange" data-field="name" class="weui-input" placeholder="姓名" value="{{defaultForm.name}}" placeholder-style="color:#ccc" />
+                    </mp-cell>
+                    <mp-cell>
+                        <view slot="title" class="mp-cell-title">证件号码<text class="danger">*</text></view>
+                        <input bindinput="defaultFormChange" data-field="identityNumber" class="weui-input" placeholder="证件号码" value="{{defaultForm.identityNumber}}" placeholder-style="color:#ccc" />
+                        <mp-icon bindtap="getReservations" type="field" class="input-icon" icon="search" color="black" size="{{24}}"></mp-icon>
+                    </mp-cell>
+                    <mp-cell>
+                        <view slot="title" class="mp-cell-title">联系电话<text class="danger">*</text></view>
+                        <input bindinput="defaultFormChange" disabled="{{inputDisable}}" data-field="phone" value="{{defaultForm.phone}}" class="weui-input" placeholder="联系电话" placeholder-style="color:#ccc" />
+                    </mp-cell>
+                    <mp-cell title="性别">
+                        <radio-group class="radio-group" data-field="gender" bindchange="defaultFormChange">
+                            <radio class="radio-item radio-item-right" wx:for="{{genderItem}}" wx:key="value" value="{{item.value}}" label="{{item.name}}" checked="{{item.value === defaultForm.gender}}" color="#13c2c2">
+                                {{item.name}}</radio>
+                        </radio-group>
+                    </mp-cell>
+                    <mp-cell>
+                        <view slot="title" class="mp-cell-title">出生日期<text class="danger">*</text></view>
+                        <picker data-field="birthday" mode="date" value="{{defaultForm.birthday}}" start="1901-09-01" end="2099-09-01" bindchange="defaultFormChange">
+                            <input disabled="true" value="{{defaultForm.birthday}}" placeholder="出生日期" placeholder-style="color: #ccc" />
+                        </picker>
+                    </mp-cell>
+                    <mp-cell title="单位">
+                        <input bindinput="defaultFormChange" data-field="unit" class="weui-input" placeholder="单位" value="{{defaultForm.unit}}" placeholder-style="color:#ccc" style="width:calc(100% - 60px)" />
+                        <view wx:if="{{!!defaultForm.unit}}" style="right: 38px; z-index: 1000;" bindtap="setTagInput" data-field="unit" data-name="" class="input-icon">
+                            <mp-icon type="field" icon="close2" color="black" size="{{24}}"></mp-icon>
+                        </view>
+                        <view class="input-icon" bindtap="openUnitList" style="transform: rotate(-90deg); top:16px; z-index: 1000;" data-type="unit">
+                            <mp-icon type="field" icon="back2" color="black" size="{{24}}"> </mp-icon>
+                        </view>
+                    </mp-cell>
+                </mp-cells>
+                <text wx:if="{{defaultForm.paymentStatus === 'PAID'}}" class="paidMarker">已支付
+                </text>
+                <text wx:if="{{defaultForm.freeIdentity}}" class="paidMarker">免费</text>
+                <text wx:if="{{!defaultForm.freeIdentity && defaultForm.paymentStatus === 'UNPAID'}}" class="unPaidMarker">未支付</text>
+                <text wx:if="{{defaultForm.highRisk14th === 'true'}}" class="dangerMarker">经停高危</text>
+            </swiper-item>
+            <swiper-item wx:key="sub">
+                <mp-cells>
+                    <mp-cell title="预约类型">
+                        <radio-group class="radio-group" data-field="type" bindchange="defaultFormChange">
+                            <radio class="radio-item radio-item-right" wx:for="{{typeOptions}}" wx:key="value" value="{{item.value}}" checked="{{item.value === defaultForm.type}}" color="#13c2c2">
+                                <view style="width:40px"> {{item.name}}</view>
+                            </radio>
+                        </radio-group>
+                    </mp-cell>
+                    <mp-cell title="样本类型">
+                        <radio-group class="radio-group" data-field="sampleSubType" bindchange="defaultFormChange">
+                            <radio class="radio-item radio-item-right" wx:for="{{sampleSubType}}" wx:key="value" value="{{item.value}}" checked="{{item.value === defaultForm.sampleSubType}}" color="#13c2c2">
+                                <view style="width:80px">{{item.name}}</view>
+                            </radio>
+                        </radio-group>
+                    </mp-cell>
+                    <mp-cell title="14日是否经停高危区">
+                        <radio-group class="radio-group" bindchange="defaultFormChange" data-field="highRisk14th">
+                            <radio class="radio-item radio-item-right" wx:for="{{yesOrNo}}" wx:key="value" value="{{item.value}}" label="{{item.name}}" checked="{{item.value === defaultForm.highRisk14th}}" color="{{defaultForm.highRisk14th==='true'?'rgb(255, 77, 79)':'#13c2c2'}}">
+                                {{item.name}}
+                            </radio>
+                        </radio-group>
+                    </mp-cell>
+                    <mp-cell title="体征（近期有无发热，咳嗽等）">
+                        <radio-group class="radio-group" bindchange="defaultFormChange" data-field="signs">
+                            <radio class="radio-item radio-item-right" wx:for="{{yesOrNo}}" wx:key="value" value="{{item.value}}" label="{{item.name}}" checked="{{item.value === defaultForm.signs}}" color="{{defaultForm.signs==='true'?'rgb(255, 77, 79)':'#13c2c2'}}">
+                                {{item.name}}</radio>
+                        </radio-group>
+                    </mp-cell>
+                </mp-cells>
+            </swiper-item>
+            <swiper-item wx:key="third">
+                <mp-cells>
+                    <mp-cell>
+                        <view class="flex">
+                            <text class="mp-cell-title">备注</text>
+                            <view class="weui-cell__bd">
+                                <textarea class="weui-textarea" bindinput="defaultFormChange" data-field="remark" disabled="{{inputDisable}}" placeholder="备注" style="height: 3.3em" value="{{defaultForm.remark}}" placeholder-style="color:#ccc" />
+                                <view class="weui-textarea-counter">0/200</view>
+                            </view>
+                        </view>
+                    </mp-cell>
+                </mp-cells>
+            </swiper-item>
+        </swiper>
+        <view style="display:flex; justify-content: space-between;width:100%">
+            <button bindtap="submitOne">
+                {{curNum}}/{{mixNum}} 提交
+            </button>
+        </view>
+    </mp-form>
+    <view style=" height:16px">
+    </view>
+    <input-log-select id="input-log-select" bind:onTapRecord="onTapRecord" />
+</view>
+<wxs module='fn'>
+    module.exports = {
+        translatePaymentStatus: function (item) {
+            var freeIdentity = item.freeIdentity;
+            var paymentStatus = item.paymentStatus;
+            if (freeIdentity) {
+                return '免费'
+            }
+            switch (paymentStatus) {
+                case 'UNPAID':
+                    return '未支付';
+                case 'PAID':
+                    return '已支付';
+                case 'REFUNDED':
+                    return '已退款'
+                case 'REFUNDEDING':
+                    return '退款中'
+                default: return '未知'
+            }
+        }
+    }
+</wxs>

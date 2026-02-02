@@ -1,0 +1,5 @@
+button.clear {
+    color: #13c2c2;
+    border: 1px #13c2c2 solid;
+    background-color: white;
+}

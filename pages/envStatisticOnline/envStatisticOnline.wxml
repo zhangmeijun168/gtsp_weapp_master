@@ -1,0 +1,74 @@
+<!--pages/envStatisticOnline/envStatisticOnline.wxml-->
+<view class="container">
+    <view>
+        <view class="row" style="justify-content: space-between; position: relative;">
+            <view class="row" style="flex-direction: column; align-items: flex-start;">
+                <view class="row">
+                    <text style="border-bottom: 1px transparent solid;">采集日期: </text>
+                    <picker data-field="" mode="date" start="2022-01-01" end="2099-09-01" bindchange="onDateChange">
+                        <text style="color:{{dateStr?undefined:'#ccc'}}" style="border-bottom: 1px solid black; padding:0 10px;">{{dateStr||'采集日期'}}</text>
+                    </picker>
+                </view>
+                <view class="row">
+                    <text style="border-bottom: 1px transparent solid;">采集点: </text>
+                    <picker bindchange="onChangeStation" value="{{stationIndex}}" range="{{stationList}}" range-key="name" style="border-bottom: 1px solid black; padding:0 10px;">
+                        {{stationName}}</picker>
+                </view>
+            </view>
+            <view bindtap="refreshData" class="button" style="min-width:auto; align-self: stretch; width:60px; margin: 10px 0">
+                刷新
+            </view>
+        </view>
+        <view>
+            <view wx:if="{{showList.length > 0}}" class="row" style="font-weight: bold;">
+                样本编号总数: {{tubeCount}}, 位点总数: {{entityCount}}
+            </view>
+            <view wx:for="{{showList}}" wx:key="unit" class="card">
+                <view class="row" style="justify-content: space-between;">
+                    <view style="font-weight: bold;">{{item.unit||'无单位'}}</view>
+                    <view data-unit="{{item.unit}}" class="link" style="text-align: right;" bindtap="openDetail">详情></view>
+                </view>
+                <view>
+                    <view class="tr header">
+                        <view>混合模式</view>
+                        <view>管数</view>
+                        <view>位点数</view>
+                    </view>
+                    <view wx:for="{{item.mix}}" wx:key="mixCount" class="tr">
+                        <view>{{item.mixDesc}}</view>
+                        <view>{{item.sampleNumbers.length}}</view>
+                        <view>{{item.entityCount}}</view>
+                    </view>
+                    <view class="tr footer">
+                        <view>合计</view>
+                        <view>{{item.tubeCount}}</view>
+                        <view>{{item.entityCount}}</view>
+                    </view>
+                </view>
+            </view>
+            <view wx:if="{{showList.length <= 0}}" class="card empty">
+                暂无数据
+            </view>
+        </view>
+    </view>
+</view>
+<page-container show="{{showDetail}}" position="right">
+    <scroll-view style="height: calc(100vh - 8px)" scroll-y>
+        <view class="container">
+            <view class="unit-bar">{{unit}}</view>
+            <view style="height:30px"></view>
+            <view wx:for="{{detailList}}" wx:key="sampleNumber" class="card">
+                <view class="row" style="justify-content: space-between;">
+                    <text style="font-weight: bold;">{{item.sampleNumber}}</text>
+                    <text>[{{item.objs.length}}/{{item.mixCount}}]</text>
+                </view>
+                <view style="border:#13c2c2 dotted 1px; border-radius: 5px;">
+                    <view wx:for="{{item.objs}}" wx:key="id" class="tr" style="border:0; grid-template-columns: 50% 50%; text-align: left; word-break: break-all; word-wrap: break-word;">
+                        <text>{{item.type}}</text>
+                        <text>{{item.name}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</page-container>

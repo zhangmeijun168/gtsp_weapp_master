@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<view>
+  <view class="header-back"></view>
+  <view wx:if="{{loginStatus === true}}">
+    <component-dashboard bind:setLoginStatus="setLoginStatus" />
+  </view>
+  <view wx:if="{{loginStatus === false}}">
+    <component-login bind:setLoginStatus="setLoginStatus" />
+  </view>
+</view>

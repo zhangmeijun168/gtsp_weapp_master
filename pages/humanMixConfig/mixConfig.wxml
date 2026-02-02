@@ -1,0 +1,63 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="container">
+    <link-to-statistic tubeCount="{{tubeCount}}" humanCount="{{reservationCount}}" pageType="human" />
+    <mp-form id="mix-config" models="{{mixConfigForm}}" rules="{{mixConfigRule}}">
+        <mp-cells>
+            <mp-cell title="预约类型">
+                <radio-group class="radio-group" data-field="type" bindchange="formFieldChange">
+                    <radio class="radio-item radio-item-right" wx:for="{{typeOptions}}" wx:key="value" value="{{item.value}}" checked="{{item.value === mixConfigForm.type}}" color="#13c2c2">
+                        <view style="width:40px"> {{item.name}}</view>
+                    </radio>
+                </radio-group>
+            </mp-cell>
+            <mp-cell title="样本类型">
+                <radio-group class="radio-group" data-field="sampleSubType" bindchange="formFieldChange">
+                    <radio class="radio-item radio-item-right" wx:for="{{sampleSubType}}" wx:key="value" value="{{item.value}}" checked="{{item.value === mixConfigForm.sampleSubType}}" color="#13c2c2">
+                        <view style="width:80px">{{item.name}}</view>
+                    </radio>
+                </radio-group>
+            </mp-cell>
+            <mp-cell title="采集模式">
+                <radio-group class="radio-group" data-field="mixMode" bindchange="formFieldChange">
+                    <radio class="radio-item radio-item-right" color="#13c2c2" value="10" checked="{{mixConfigForm.mixMode==='10'}}">
+                        <view style="width:40px">10混</view>
+                    </radio>
+                    <radio class="radio-item radio-item-right" color="#13c2c2" value="5" checked="{{mixConfigForm.mixMode==='5'}}">
+                        <view>5混</view>
+                    </radio>
+                    <radio class="radio-item radio-item-right" color="#13c2c2" value="1" checked="{{mixConfigForm.mixMode==='1'}}">
+                        <view style="width:40px">单混</view>
+                    </radio>
+                    <radio class="radio-item radio-item-right" color="#13c2c2" value="selfDefined" checked="{{mixConfigForm.mixMode==='selfDefined'}}">
+                        <view>
+                            <input style="width:22px; border-bottom: solid 1px black; display: inline-block; margin-right: 4px;" value="{{mixConfigForm.selfDefinedNum}}" bindinput="formFieldChange" data-field="selfDefinedNum" />混
+                        </view>
+                    </radio>
+                </radio-group>
+            </mp-cell>
+            <!-- <mp-cell title="采样日期">
+                <picker data-field="samplingDate" mode="date" start="2021-01-01" end="2099-09-01" bindchange="formFieldChange">
+                    <input disabled="true" value="{{mixConfigForm.samplingDate}}" placeholder="采集日期" placeholder-style="color: #ccc" />
+                </picker>
+            </mp-cell> -->
+            <mp-cell title="单位" wx:if="{{mixConfigForm.type === '团体'}}">
+                <input bindinput="formFieldChange" data-field="unit" class="weui-input" placeholder="单位" value="{{mixConfigForm.unit}}" placeholder-style="color:#ccc" style="width:calc(100% - 60px)" />
+                <view wx:if="{{!!mixConfigForm.unit}}" style="right: 38px; z-index: 1000;" bindtap="setTagInput" data-field="unit" data-name="" class="input-icon">
+                    <mp-icon type="field" icon="close2" color="black" size="{{24}}"></mp-icon>
+                </view>
+                <view class="input-icon" bindtap="openUnitList" style="transform: rotate(-90deg); top:16px; z-index: 1000;">
+                    <mp-icon type="field" icon="back2" color="black" size="{{24}}"> </mp-icon>
+                </view>
+            </mp-cell>
+            <!-- <mp-cell title="地址">
+                <input bindinput="formFieldChange" data-field="address" class="weui-input" placeholder="地址" value="{{mixConfigForm.address}}" placeholder-style="color:#ccc" />
+                <mp-icon bindtap="setTagInput" data-field="address" type="field" class="input-icon" icon="close2" color="black" size="{{24}}"></mp-icon>
+            </mp-cell> -->
+        </mp-cells>
+    </mp-form>
+    <view style="display:flex; justify-content:space-between; width:100%;">
+        <button bindtap="clearForm" class="clear" style="width:44%">重置</button>
+        <button bindtap="goNextStep" style="width:44%">下一步</button>
+    </view>
+    <input-log-select id="input-log-select" bind:onTapRecord="onTapRecord" />
+</view>

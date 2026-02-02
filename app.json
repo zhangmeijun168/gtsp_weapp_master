@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/humanMixConfig/mixConfig",
+    "pages/humanSampling/humanSampling",
+    "pages/humanSearch/humanSearch",
+    "pages/humanStatistic/humanStatistic",
+    "pages/humanStatisticOnline/humanStatisticOnline",
+    "pages/reservationSearch/reservationSearch",
+    "pages/envMixConfig/mixConfigEnv",
+    "pages/envSampling/envSampling",
+    "pages/envStatistic/envStatistic",
+    "pages/envStatisticOnline/envStatisticOnline",
+    "pages/userAgreement/userAgreement",
+    "pages/privacyAgreement/privacyAgreement",
+    "pages/mtReceive/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,73 @@
+.container {
+  margin: 0 15px;
+}
+
+.header {
+  background-color: #ffffff;
+  height: 130px;
+  box-shadow: 0 2px 4px rgba(140, 140, 140, 0.5);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+  margin-top: 8px;
+}
+
+.header-form {
+  display: flex;
+  height: 130;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  padding: 10px 0;
+}
+
+.form-column {
+  display: flex;
+  justify-content: center;
+  margin: 15rpx;
+  padding: 5px 0;
+}
+
+.form-column input {
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  padding: 0;
+  margin: 0 10px 0 10px;
+  color: #555;
+  padding: 5px;
+}
+
+.form-column input::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+.logo-backupgroud {
+  position: absolute;
+  height: 105px;
+  width: 105px;
+  right: 15px;
+  top: 15px;
+  opacity: 0.05;
+}
+.form-checkbox {
+  margin-top: 10px;
+  display: block;
+  font-size: 14px;
+}
+.form-checkbox .link {
+  color: #13c2c2;
+  display: inline-block;
+}
+/* .btn-code {
+  margin-bottom: 5rpx;
+  width: 700rpx;
+  background-color: #13c2c2;
+  color: #ffffff;
+} */
+
+/* .form-column button {
+  font-size: 12px;
+} */

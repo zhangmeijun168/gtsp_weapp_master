@@ -1,0 +1,18 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="container">
+  <mp-form id="defaultForm" rules="{{defaultFormRule}}" models="{{defaultForm}}">
+    <mp-cells>
+      <mp-cell>
+        <view slot="title" class="mp-cell-title">样本编号<text class="danger">*</text></view>
+        <input bindinput="defaultFormChange" data-field="barCode" class="weui-input" placeholder="样本编号" value="{{defaultForm.barCode}}" placeholder-style="color:#ccc" />
+        <mp-icon bindtap="scanBarCode" type="field" class="input-icon" icon="camera" color="black" size="{{24}}"></mp-icon>
+      </mp-cell>
+      <mp-cell title="备注">
+        <input bindinput="defaultFormChange" data-field="remark" class="weui-input" placeholder="备注" value="{{defaultForm.remark}}" placeholder-style="color:#ccc" />
+      </mp-cell>
+    </mp-cells>
+    <view style="display:flex; justify-content: space-between;width:100%">
+      <button bindtap="submitOne">提交</button>
+    </view>
+  </mp-form>
+</view>

@@ -1,0 +1,154 @@
+/**app.wxss**/
+@import '/miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss';
+
+.container {
+    margin: 0 6px;
+}
+
+text.danger {
+    color: red
+}
+
+.header-back {
+    width: 100%;
+    background-color: #13c2c2;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+button {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+    background-color: #13c2c2;
+    color: #FFFFFF;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+.button {
+    border: 1px solid #13c2c2;
+    border-radius: 5px;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #13c2c2
+}
+
+.button:focus,
+.button:active {
+    background-color: #dedede;
+    border-color: #dedede;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+button.danger,
+.button.danger {
+    background-color: #FA5151;
+}
+
+button.grey,
+.button.grey {
+    background-color: black;
+    opacity: 0.15;
+}
+
+button.small,
+.button.small {
+    margin-top: 0;
+    margin-bottom: 0;
+    /* height: 20px; */
+    font-size: 12px;
+}
+
+.input-icon {
+    opacity: 0.3;
+    position: absolute;
+    margin: 0;
+    right: 6px;
+    top: 15px;
+    z-index: 100;
+}
+
+.radio-item {
+    margin-right: 16px;
+}
+
+.weui-label {
+    margin-right: 12px;
+}
+
+.radio-item {
+    margin: 5px 0;
+}
+
+.radio-item-right {
+    padding-right: 40rpx;
+}
+
+.radio-item-left {
+    padding-left: 40rpx;
+}
+
+.mp-cell-title {
+    width: 105px;
+    margin-right: 12px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.card {
+    margin-bottom: 16px;
+}
+
+.card.empty {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    color: #ccc;
+    height: 120px;
+    align-items: center;
+    border: dotted 1px;
+    border-radius: 5px;
+}
+
+.tr {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    text-align: center;
+    vertical-align: center;
+    border: 1px #13c2c2 dotted;
+    border-top-width: 0;
+    padding: 2px 8px;
+}
+
+.tr.header {
+    background-color: #13c2c2;
+    color: white;
+    border-style: solid;
+    border-top-width: 1px;
+}
+
+.tr.footer {
+    background-color: #eee;
+}
+
+.link {
+    color: #13c2c2;
+    /* border-bottom: 1px solid #13c2c2; */
+    font-size: 13px;
+    min-width: 60px;
+}
+
+.link:focus,
+.link:active {
+    color: #dedede;
+    /* border-color: #dedede */
+}

@@ -1,0 +1,23 @@
+.select-scroll {
+    height: 80vh;
+    padding: 20px 0;
+}
+
+.select-view {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.select-option {
+    margin: 4px 1.5vw;
+    padding: 4px 8px;
+    min-width: 24vw;
+    color: #13c2c2;
+    border: solid 1px #13c2c2;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 8px;
+    word-wrap: break-word;
+    display: inline-block;
+}

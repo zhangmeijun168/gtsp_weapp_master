@@ -1,0 +1,20 @@
+/* pages/userAgreement.wxss */
+.userAgreement {
+  padding: 10px;
+}
+.userAgreement text{
+  display: block;
+  font-size: 14px;
+  line-height: 2em;
+}
+.userAgreement .title{
+  font-size: 20px;
+  font-weight: bold;
+}
+.userAgreement .subtitle {
+  font-size: 16px;
+  font-weight: bold;
+}
+.userAgreement .pp{
+  text-indent: 1em;
+}

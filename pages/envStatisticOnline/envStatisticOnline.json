@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "用户环境样本在线汇总",
+  "navigationBarBackgroundColor": "#13c2c2",
+  "usingComponents": {
+    "mp-icon": "/miniprogram_npm/weui-miniprogram/icon/icon"
+  }
+}

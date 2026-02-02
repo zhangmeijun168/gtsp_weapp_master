@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "新冠检测采样助手",
+  "navigationBarBackgroundColor": "#13c2c2",
+  "component": true,
+  "usingComponents": {
+    "mp-toptips": "/miniprogram_npm/weui-miniprogram/toptips/toptips",
+    "mp-form": "/miniprogram_npm/weui-miniprogram/form/form"
+  }
+}

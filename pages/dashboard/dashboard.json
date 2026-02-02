@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "欢迎使用新冠检测采样助手",
+  "navigationBarBackgroundColor": "#13c2c2",
+  "component": true,
+  "usingComponents": {
+    "mp-dialog": "/miniprogram_npm/weui-miniprogram/dialog/dialog",
+    "mp-actionSheet": "/miniprogram_npm/weui-miniprogram/actionsheet/actionsheet"
+  }
+}

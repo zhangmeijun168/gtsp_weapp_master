@@ -1,0 +1,13 @@
+{
+    "navigationBarTitleText": "环境采集配置",
+    "navigationBarBackgroundColor": "#13c2c2",
+    "usingComponents": {
+        "mp-toptips": "/miniprogram_npm/weui-miniprogram/toptips/toptips",
+        "mp-cells": "/miniprogram_npm/weui-miniprogram/cells/cells",
+        "mp-cell": "/miniprogram_npm/weui-miniprogram/cell/cell",
+        "mp-form": "/miniprogram_npm/weui-miniprogram/form/form",
+        "mp-icon": "/miniprogram_npm/weui-miniprogram/icon/icon",
+        "link-to-statistic": "/pages/comLinkToStatistic/comLinkToStatistic",
+        "input-log-select": "/pages/comInputLogSelect/comInputLogSelect"
+    }
+}

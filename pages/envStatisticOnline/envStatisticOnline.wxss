@@ -1,0 +1,16 @@
+/* pages/envStatisticOnline/envStatisticOnline.wxss */
+
+.container {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.unit-bar {
+    margin-bottom: 16px;
+    position: fixed;
+    background-color: #dedede;
+    left: 0;
+    right: 0;
+    height: 25px;
+    padding: 2px 18px;
+}

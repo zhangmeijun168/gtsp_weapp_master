@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "weui-miniprogram": "^1.2.3",
+    "wxmp-rsa": "^2.1.0"
+  }
+}
